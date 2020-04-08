@@ -2,14 +2,28 @@ import unittest
 
 
 class Solution:
-    @staticmethod
-    def find_min_k_mun(data):
+    def find_first_once_char(self, string):
+        if string is None:
+            return 0
+        if len(string) == 0:
+            return 0
+        counts = {}
+        for i in range(len(string)):
+            if string[i] in counts.keys():
+                counts[string[i]] += 1
+            else:
+                counts[string[i]] = 1
+        for key,value in counts.items():
+            if value==1:
+                return key
         return 0
 
 
 class Test(unittest.TestCase):
+    obj = Solution()
+
     def test_1(self):
-        self.assertEqual("", "")
+        self.assertEqual(self.obj.find_first_once_char("abcdefbfbfabc"), "d")
 
     def test_2(self):
         self.assertEqual("", "")
